@@ -2,6 +2,7 @@ package com.example.restparser.pojo_model;
 
 import android.os.AsyncTask;
 
+import com.example.restparser.JsonParser;
 import com.example.restparser.MainActivity;
 
 import java.io.BufferedReader;
@@ -12,7 +13,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-class TaskRest extends AsyncTask<String, Integer, String> {
+public class TaskRest extends AsyncTask<String, Integer, String> {
     protected String doInBackground(String... urls) {
         URL url = null;
         try {
@@ -63,6 +64,13 @@ class TaskRest extends AsyncTask<String, Integer, String> {
     protected void onPostExecute(String result) {
         // this is executed on the main thread after the process is over
         // update your UI here
+        Payload p = new Payload();
+        try {
+            JsonParser.getResponseStep(result,Payload.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        p.getId();
 
     }
 }
