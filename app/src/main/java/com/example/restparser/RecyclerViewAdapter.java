@@ -31,7 +31,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
         holder.itemText.setText(itemList.get(position).getText());
         holder.itemDate.setText(
-                new SimpleDateFormat("yyyy-MM-dd").format(
+                new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(
                         new Date(
                                 itemList.get(position).getPublicationDate().getMilliseconds())));
     }
